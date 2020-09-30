@@ -1,0 +1,22 @@
+<! DOCKTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Bookstore</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<h1>Categories</h1>
+<table>
+<tbody>
+<tr>
+<th>name</th>
+
+</tr>
+<tr th:each = "category : ${categories}">
+<td th:text="${category.name}"></td>
+<td><a th:href="@{/deleteCategory/{id}(id=${category.id})}">Delete</a></td>
+</tr>
+</tbody>
+</table>
+<a href="/addCategory" class="btn btn-primary">Add Category</a>
+</html>
