@@ -11,17 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import hh.swd20.bookstore.domain.Book;
 import hh.swd20.bookstore.domain.BookRepository;
-import hh.swd20.bookstore.domain.Category;
-import hh.swd20.bookstore.domain.CategoryRepository;
 
 @Controller
 public class BookController {
 
 	@Autowired
 	private BookRepository bookRepository;
-	
-	@Autowired
-	private CategoryRepository categoryRepository;
 	
 	@RequestMapping("/index")
 	public String index(Model model) {
@@ -49,31 +44,7 @@ public class BookController {
 		return "redirect:../index";
 	}
 	
-	@RequestMapping("/category")
-	public String category(Model model) {
-		
-		model.addAttribute("categories", categoryRepository.findAll());
-		
-		return "categorylist";
-	}
-	
-	@RequestMapping(value = "/addCategory")
-	public String addCategory(Model model) {
-		model.addAttribute("category", new Category());
-		return "addcategory";
-	}
-	
-	@RequestMapping(value = "/saveCategory", method = RequestMethod.POST)
-	public String saveCategory(Category category) {
-		categoryRepository.save(category);
-		return "redirect:category";
-	}
-	
-	@RequestMapping(value = "/deleteCategory/{id}", method = RequestMethod.GET)
-	public String deleteCategory(@PathVariable("id") Long categoryId, Model model) {
-		categoryRepository.deleteById(categoryId);
-		return "redirect:../category";
-	}
+
 	
 }
 
