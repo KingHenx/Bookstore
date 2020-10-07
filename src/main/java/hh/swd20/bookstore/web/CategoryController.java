@@ -38,8 +38,8 @@ public class CategoryController {
 	}
 	
 	@RequestMapping(value = "/deleteCategory/{id}", method = RequestMethod.GET)
-	public String deleteCategory(@PathVariable("id") Long categoryId, Model model) {
-		categoryRepository.deleteById(categoryId);
+	public String deleteCategory(@PathVariable("id") Long id, Model model) {
+		categoryRepository.deleteById(id);
 		return "redirect:../category";
 	}
 	

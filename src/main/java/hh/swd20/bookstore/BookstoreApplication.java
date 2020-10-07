@@ -20,13 +20,6 @@ public class BookstoreApplication {
 	@Bean
 	public CommandLineRunner bookDemo(BookRepository bookRepository, CategoryRepository categoryRepository) {
 		return(args) ->{
-			Book a = new Book("Lord of the Flies", "Willian Golding", 1954, "0-571-05686-5", 20);
-			Book b = new Book("The Egyptian", "Mika Waltari", 1945, "1-55652-441-2", 30);
-			Book c = new Book("Purge", "Sofi Oksanen", 2010, "951-0-33973-3", 25);
-			
-			bookRepository.save(a);
-			bookRepository.save(b);
-			bookRepository.save(c);
 			
 			Category x = new Category("Horror");
 			Category y = new Category("Romance");
@@ -35,6 +28,15 @@ public class BookstoreApplication {
 			categoryRepository.save(x);
 			categoryRepository.save(y);
 			categoryRepository.save(z);
+			
+			Book a = new Book("Lord of the Flies", "Willian Golding", 1954, "0-571-05686-5", 20, x);
+			Book b = new Book("The Egyptian", "Mika Waltari", 1945, "1-55652-441-2", 30, y);
+			Book c = new Book("Purge", "Sofi Oksanen", 2010, "951-0-33973-3", 25, z);
+
+			bookRepository.save(a);
+			bookRepository.save(b);
+			bookRepository.save(c);
+			
 		};
 	}
 
